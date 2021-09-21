@@ -1,6 +1,6 @@
 var bow , arrow,  background;
 var bowImage, arrowImage, green_balloonImage, red_balloonImage, pink_balloonImage ,blue_balloonImage, backgroundImage;
-
+var redB,blueB,greenB,pinkB,arrowGroup
 function preload(){
   
   backgroundImage = loadImage("background0.png","background20.png");
@@ -27,6 +27,11 @@ function setup() {
   bow = createSprite(380,220,20,50);
   bow.addImage(bowImage); 
   bow.scale = 1;
+
+redB = new Group()
+blueB= = new Group()
+pinkB= = new Group()
+greenB= = new Group()
   
 }
 
@@ -48,39 +53,7 @@ function draw() {
     
   }
   
-  //creating continous balloons
-  var select_balloon = Math.round(random(1,1));
   
-  if (World.frameCount % 100 == 0) {
-    if (select_balloon == 1) {
-      redBalloon();
-    }
-  }
-
-  var select_balloon = Math.round(random(1,1));
-  
-  if (World.frameCount % 100 == 0) {
-    if (select_balloon == 1) {
-      blueBalloon();
-    }
-  }
-
-  var select_balloon = Math.round(random(1,1));
-  
-  if (World.frameCount % 100 == 0) {
-    if (select_balloon == 1) {
-      greenBalloon();
-    }
-  }
-
-  var select_balloon = Math.round(random(1,1));
-  
-  if (World.frameCount % 100 == 0) {
-    if (select_balloon == 1) {
-      pinkBalloon();
-    }
-  }
-
 
   //creating continous enemies  
    var select_balloon = Math.round(random(1,4));
@@ -102,21 +75,29 @@ function draw() {
     //arrowGroup.add();
     //arrowGroup.add(arrow);
 
-
-    //redB.destroyEach();
+if(arrowGroup.isTouching(redB)
+{
+    redB.destroyEach();
     //redB.destroy();
     //redB.Each();
     //ballon.destroyEach();
-
-//greenA.destroyEach();
+}
+if(arrowGroup.isTouching(greenB){
+greenB.destroyEach();
     //greenA.destroy();
     //greenA.Each();
     //ballon.destroyEach();
+}
+if(arrowGroup.isTouching(blueB){
+   blueB.destroyEach()
+}
+if(arrowGroup.isTouching(pinkB){
 
-   //blueC.destroyEach();
+pinkB.destroyEach()
     //blueC.destroy();
     //blueC.Each();
     //ballon.destroyEach();
+}
  
 
 
@@ -139,6 +120,9 @@ function draw() {
   arrow.velocityX = -4;
   arrow.lifetime = 100;
   arrow.scale = 0.3;
+arrowGroup.add(arrow)
+
+
 }
 
 
@@ -148,6 +132,7 @@ function redBalloon() {
   red.velocityX = 3;
   red.lifetime = 150;
   red.scale = 0.1;
+redB.add(redBalloon)
 
 }
 
@@ -158,6 +143,7 @@ function blueBalloon() {
   blue.velocityX = 3;
   blue.lifetime = 150;
   blue.scale = 0.1;
+blueB.add(blueBalloon)
 
 
 }
@@ -170,6 +156,7 @@ function greenBalloon() {
   green.lifetime = 150;
   green.scale = 0.1;
 
+greenB.add(greenBalloon)
 
 }
 
@@ -180,6 +167,7 @@ function pinkBalloon() {
   pink.velocityX = 3;
   pink.lifetime = 150;
   pink.scale = 0.1;
+pinkB.add(pinkBalloon)
 
 
 }
